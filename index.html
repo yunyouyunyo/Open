@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video</title>
+</head>
+
+<body>
+    <video id="video" controls autoplay src="/static/A.mp4" style="height: 200px; width: 200px;"></video>
+    <script>
+        let videoView = document.getElementById("video");
+        let videos = ["/static/A.mp4", "/static/B.mp4", "/static/C.mp4"];
+        let currentVideoIndex = 0;
+
+        videoView.addEventListener("ended", async () => {
+            if (currentVideoIndex == 1)
+                currentVideoIndex++;
+            videoView.src = videos[currentVideoIndex];
+            
+            videoView.play();
+            console.log(currentVideoIndex);
+        });
+
+
+        videoView.addEventListener("click", async () => {
+            if (currentVideoIndex != 1)
+                currentVideoIndex++;
+            if (currentVideoIndex >= videos.length)
+                currentVideoIndex = 0;
+            videoView.src = videos[currentVideoIndex];
+        });        
+    </script>
+</body>
+
+</html>
