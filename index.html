@@ -8,10 +8,10 @@
 </head>
 
 <body>
-    <video id="video" controls autoplay src="Open/static/A.mp4" style="height: 200px; width: 200px;"></video>
+    <video id="video" controls autoplay src="/Open/static/A.mp4" style="height: 200px; width: 200px;"></video>
     <script>
         let videoView = document.getElementById("video");
-        let videos = ["Open/static/A.mp4", "Open/static/B.mp4", "/static/C.mp4"];
+        let videos = ["/Open/static/A.mp4", "/Open/static/B.mp4", "/static/C.mp4"];
         let currentVideoIndex = 0;
 
         videoView.addEventListener("ended", async () => {
