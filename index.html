@@ -18,18 +18,20 @@
             if (currentVideoIndex == 1)
                 currentVideoIndex++;
             videoView.src = videos[currentVideoIndex];
-            
+
             videoView.play();
             console.log(currentVideoIndex);
         });
 
 
         videoView.addEventListener("click", async () => {
+            event.preventDefault(); // 阻止默認行為
             if (currentVideoIndex != 1)
                 currentVideoIndex++;
             if (currentVideoIndex >= videos.length)
                 currentVideoIndex = 0;
             videoView.src = videos[currentVideoIndex];
+            videoView.play();
         });        
     </script>
 </body>
