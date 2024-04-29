@@ -5,14 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video</title>
+    
 </head>
 
 <body>
-    <video id="video" controls autoplay src="./static/A.mp4" style="max-height: 80%; max-width: 80%;"></video>
+    <style>
+        body {
+            margin: 10;
+            overflow: auto; /* 隱藏捲動條 */
+        }
+
+        video {
+            width: 100vw; /* 100% 寬度 */
+            height: 100vh; /* 100% 高度 */
+        }
+    </style>
+    <video id="video" controls autoplay src="./static/A.mp4" style="width: 100%; height: auto;"></video>
     <script>
         let videoView = document.getElementById("video");
         let videos = ["./static/A.mp4", "./static/B.mp4", "./static/C.mp4"];
         let currentVideoIndex = 0;
+
+          // 隱藏控制條
+          function hideControls() {
+            videoView.controls = false;
+        }
+
+        // 顯示控制條
+        function showControls() {
+            videoView.controls = true;
+        }
 
         videoView.addEventListener("ended", async () => {
             if (currentVideoIndex == 1)
@@ -23,8 +45,8 @@
             console.log(currentVideoIndex);
         });
 
-
         videoView.addEventListener("click", async () => {
+            hideControls();
             event.preventDefault(); // 阻止默認行為
             if (currentVideoIndex != 1)
                 currentVideoIndex++;
@@ -32,8 +54,12 @@
                 currentVideoIndex = 0;
             videoView.src = videos[currentVideoIndex];
             videoView.play();
-        });        
+        });   
+        // 初始時隱藏控制條
+        hideControls();
+     
     </script>
 </body>
 
 </html>
+
